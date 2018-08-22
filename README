@@ -1,4 +1,18 @@
-You have successfully created an Atlassian Plugin!
+## Setup
+install atlassian-sdk and follow setup instructions from https://developer.atlassian.com/server/framework/atlassian-sdk/set-up-the-atlassian-plugin-sdk-and-build-a-project/
+
+## Build Plugin
+run `atlas-mvn package`
+
+## Run Plugin
+run `atlas-run`
+
+## Debug Plugin
+run `atlas-debug`
+and connect your IDE-Debugger to the debugging port 
+https://developer.atlassian.com/server/framework/atlassian-sdk/creating-a-remote-debug-target/
+
+
 
 Here are the SDK commands you'll use immediately:
 
