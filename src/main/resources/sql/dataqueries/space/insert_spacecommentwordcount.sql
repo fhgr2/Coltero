@@ -1,0 +1,1 @@
+insert into AGG_SPACECOMMENTWORDCOUNT (spacename, wordcount, time) values (?,?,now());

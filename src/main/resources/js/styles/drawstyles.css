@@ -1,0 +1,186 @@
+/* Overwritten and new css class styles for coltero dashboard */
+
+div#boxplot-author-pages svg g g.axis g.tick text {
+    font-family: helvetica;
+    font-weight: 100;
+    color: grey;
+    font-size: 10pt;
+}
+
+.dc-title-custom {
+    font-family: helvetica;
+    font-weight: 100;
+    color: grey;
+    font-size: 15pt;
+    /* text-align: left; */
+    float: left;
+}
+
+.dc-table-head {
+    background-color: cornflowerblue;
+    color: white;
+    padding-left: 8px;
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.d3-network-custom {
+    position: relative;
+    height: 550px;
+    width: 600px;
+    margin-top: 8pt;
+    margin: auto;
+}
+
+.d3-network-custom-maximize {
+    position: relative;
+    height: 550px;
+    min-width: 600px;
+    width: 600px;
+    margin-top: 8pt;
+    margin: auto;
+}
+
+.d3-world-map {
+    position: relative;
+    height: 660px;
+    width: 1280px;
+    min-width: 1100;
+    margin-top: 8pt;
+    margin: auto;
+}
+
+.tool-tip-custom {
+    /* text-align: right; */
+    position: relative;
+    font-size: 20px;
+    float: right;
+    color: black;
+}
+
+.dc-chart {
+    position: relative;
+    height: 330px;
+    margin-top: 5px;
+    margin: auto;
+    min-width: 600px;
+    width: 600px;
+}
+
+.dc-chart-boxplot {
+    position: relative;
+    height: 430px;
+    min-width: 600px;
+    width: 600px;
+    margin-top: 8px;
+    margin: auto;
+}
+
+.dc-chart-pie {
+    position: relative;
+    height: 380;
+    min-width: 600px;
+    width: 600px;
+    margin-top: 8px;
+    margin: auto;
+}
+
+.dc-chart-work {
+    position: relative;
+    height: 350px;
+    min-width: 600px;
+    width: 600px;
+    margin-top: 8px;
+    margin: auto;
+}
+
+.panel-body {
+    position: relative;
+    text-align: center;
+}
+
+.col-centered svg {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+td {
+    text-align: left;
+    padding: 5px;
+    width: 300px;
+}
+
+table.coltero-table {
+    margin: 0px auto;
+    float: none;
+    width: 80%;
+}
+
+line.link {
+    stroke: #777;
+}
+
+#states path {
+    fill: #ccc;
+    stroke: #fff;
+}
+
+path.arc {
+    pointer-events: none;
+    fill: none;
+    stroke: rgb(219, 132, 17);
+    stroke-opacity: 0.25;
+    display: none;
+}
+
+path.cell {
+    fill: none;
+    pointer-events: all;
+}
+
+.d3-world-map.svg.g#circle {
+    fill: #679;
+    stroke: #235;
+    stroke-width: 1.5;
+}
+
+
+/* #title {
+    font-size: 18px;
+} */
+
+#cells.voronoi path.cell {
+    stroke: brown;
+}
+
+#cells g:hover path.arc {
+    display: inherit;
+}
+
+.d3-world-map.svg.g.g.text {
+    font-family: helvetica;
+    font-weight: 100;
+    color: grey;
+    font-size: 10pt;
+}
+
+.d3-tip {
+    color: black;
+}
+
+.aui-header .aui-header-logo-device {
+    margin-top: 10px;
+}
+
+.aui-header {
+    font-size: 14px;
+}
+
+.col-md-2 {
+    min-width: 150;
+    width: auto !important;
+    width: 150;
+}

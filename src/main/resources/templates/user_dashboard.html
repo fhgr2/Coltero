@@ -1,0 +1,245 @@
+<html>
+
+<head>
+    <title>$action.username Dashboard</title>
+    $webResourceManager.requireResource("ch.htwchur.coltero.dashboard:dashboard-resources")
+    <meta name="decorator" content="atl.general">
+    <meta charset="utf-8">
+    <meta name="description" content="coltero dashboard">
+    <meta name="author" content="HTW Chur, Sandro Hoerler, sandro.hoerler@htwchur.ch">
+    <meta name="keyword" content="KPI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body id="mimin" class="dashboard">
+    <div id="spot-light">
+        <div class="tool-tip-custom" id="close-spot-light">&#9746</div>
+        <div id="spot-light-content"></div>
+    </div>
+    <div class="container-fluid mimin-wrapper">
+
+        <div id="content" class="coltero">
+            <div class="tabs-wrapper text-center">
+                <div class="panel box-shadow-none text-left content-header">
+                    <div class="panel-body" style="padding-bottom:0px;">
+                        <ul id="tabs-demo" class="nav nav-tabs content-header-tab" role="tablist" style="padding-top:10px;">
+                            <li role="presentation" class="active">
+                                <a href="#tabs-area-demo" id="tabs1" data-toggle="tab">Content and User Overview</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#panels-area-demo" id="tabs2" data-toggle="tab">User, Collaboration, Tag</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tabs-area-demo" aria-labelledby="tabs1">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Connections</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of connections of this user. A connection occurs if the user contributed on the same page like a other user. The average connection is the average number of connections of all users">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-connections"></h2>
+                                        <h2 id="chart-connectionsAvg"></h2>
+                                        <p>User connections vs average connections</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Range</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Potential content reach. Number of users of all your spaces you are a member of.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-contentrange"></h2>
+                                        <h2 id="chart-contentrangeAvg"></h2>
+                                        <p>User range vs average range</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Reactions</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of users that reacted to my content by writing comments or liking it.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-reactions"></h2>
+                                        <h2 id="chart-reactionsAvg"></h2>
+                                        <p>Reacting users vs average reactions</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Words</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of words written by the user.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-writtenwords"></h2>
+                                        <h2 id="chart-writtenwordsavg"></h2>
+                                        <p>Words written by user vs average words written by others</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6" style="min-width:300px">
+                                <div class="panel panel-default">
+                                    <div class="panel-body col-centered pre-scrollable" style="max-height: 500px">
+                                        <div class="dc-title-custom">User connections list</div>
+                                        <span class="text-right tool-tip-custom" data-toggle="tooltip" title="List with all connected users.">&#8505</span>
+                                        <table class="coltero-table " id="chart-contacts-list"></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="min-width:882px">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="dc-title-custom">User locations</div>
+                                        <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Precentage of co-authors and co-commentators per location.">&#8505</span>
+                                        <div class="col-centered dc-chart-pie" id="chart-cocommtores-location"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Overview Tab-->
+
+                    <!-- Start of UserAndCollaboration Area-->
+                    <div role="tabpanel" class="tab-pane fade" id="panels-area-demo" aria-labelledby="tabs2">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Tag network</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Users are connected to you if they used the same tags. Only the 3 most used tags by you and the other users are used to calculate the connections. Note that not all results are visualized due to readability and performance. Tipp: a double click on a space shows just the directly connected.">&#8505</span>
+                                            <div class="col-centered d3-network-custom" id="label-network"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Author and commentor network</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Network of co-authors, co-commentators and uploaders. Only users with more than 5 interactions are counted. Tipp: a double click on a space shows just the directly connected.">&#8505</span>
+                                            <span class="text-right tool-tip-custom" title="Fullsize" id="maximize-authorcommentatornetwork" style="float: right">&#10138</span>
+                                            <div class="col-centered d3-network-custom" id="cocommtores-network"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Tag cloud</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Tag cloud of all tags assotiated with your user.">&#8505</span>
+                                            <div class="col-centered dc-chart-pie" id="chart-tag-cloud"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of UserAndCollaboration Area-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".nav-tabs a").click(function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+
+            var spotLightElement;
+            // Set BaseUrl for Rest-Calls
+            setBaseUrl();
+
+            var userid = "$action.userid";
+            var querie = "?userid=" + userid;
+
+            genericQuerieExecutor(function(json) {
+                drawUserConnectionTable(json, "#chart-contacts-list")
+            }, "usr", "QRY_USR_CONNECTIONS" + querie);
+
+
+            genericQuerieExecutor(function(json) {
+                drawSpaceUserLoactionRatios(json, "#chart-cocommtores-location")
+            }, "usr", "QRY_COM_LOCATIONS" + querie);
+
+            genericQuerieExecutor(function(json) {
+                drawTagCloudSpace(json, "#chart-tag-cloud")
+            }, "usr", "QRY_TAG_CLOUD" + querie);
+
+            genericQuerieExecutor(function(json) {
+                drawForcedGraph(json, "#label-network")
+            }, "usr", "QRY_TAG_NETWORK" + querie);
+
+            genericQuerieExecutor(function(json) {
+                getAllUserStatistics(json)
+            }, "usr", "QRY_USR_STATAVG" + querie);
+
+            genericQuerieExecutor(function(json) {
+                drawAuthorCommentatorNetwork(json, "#cocommtores-network")
+            }, "usr", "QRY_USR_NETWORK" + querie);
+
+            $("#spot-light").hide();
+            $("#close-spot-light").click(function(e) {
+                $("#spot-light-content").empty();
+                $("#content").show();
+                $("#spot-light").hide();
+            });
+
+            $("#maximize-authorcommentatornetwork").click(function(e) {
+                var width = $(window).width() - 50;
+                var height = $(window).height() - 100;
+                var spotlight = $("#spot-light-content");
+                if (typeof(spotLightElement == 'undefined')) {
+                    genericQuerieExecutor(function(json) {
+                        drawAuthorCommentatorNetwork(json, "#spot-light-content", width, height)
+                    }, "usr", "QRY_USR_NETWORK" + querie);
+                }
+                $("#content").hide();
+                $("#spot-light").show();
+            });
+        });
+    </script>
+</body>
+
+</html>

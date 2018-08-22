@@ -1,0 +1,287 @@
+<html>
+
+<head>
+    <title>$action.spaceName Dashboard</title>
+    $webResourceManager.requireResource("ch.htwchur.coltero.dashboard:dashboard-resources")
+    <meta name="decorator" content="atl.general">
+    <meta charset="utf-8">
+    <meta name="description" content="coltero dashboard">
+    <meta name="author" content="HTW Chur, Sandro Hoerler, sandro.hoerler@htwchur.ch">
+    <meta name="keyword" content="KPI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body id="mimin" class="dashboard">
+    <div id="spot-light">
+        <div class="tool-tip-custom" id="close-spot-light">&#9746</div>
+        <div id="spot-light-content"></div>
+    </div>
+
+    <div class="container-fluid mimin-wrapper">
+
+        <div id="content" class="coltero">
+            <div class="tabs-wrapper text-center">
+                <div class="panel box-shadow-none text-left content-header">
+                    <div class="panel-body" style="padding-bottom: 0px;">
+                        <ul id="tabs-demo" class="nav nav-tabs content-header-tab" role="tablist" style="padding-top: 10px;">
+                            <li role="presentation" class="active"><a href="#tabs-area-demo" id="tabs1" data-toggle="tab">Content</a>
+                            </li>
+                            <li role="presentation" class=""><a href="#panels-area-demo" id="tabs2" data-toggle="tab">User and Collaboration</a></li>
+                            <li role="presentation" class=""><a href="#panels-content-area" id="tabs3" data-toggle="tab">Co-Space
+									and Tag network</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 tab-content">
+
+                    <div role="tabpanel" class="tab-pane fade active in" id="tabs-area-demo" aria-labelledby="tabs1">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Pages</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of pages">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right"></div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-pages"></h2>
+                                        <p>Space pages</p>
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Comments</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of comments">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right"></div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-comments"></h2>
+                                        <p>Space comments</p>
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="min-width:882px">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="dc-title-custom">User location</div>
+                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Precentage of users per location that contributed to the space.">&#8505</span>
+                                    <div class="col-centered dc-chart-pie" id="chart-user-location"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="min-width:882px">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="dc-title-custom">Tag-Cloud</div>
+                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Tags used in the space.">&#8505</span>
+                                    <div class="col-centered dc-chart-pie" id="chart-tag-cloud"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Overview Tab-->
+
+                    <!-- Start of UserAndCollaboration Area-->
+                    <div role="tabpanel" class="tab-pane fade" id="panels-area-demo" aria-labelledby="tabs2">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body col-centered">
+                                            <div class="dc-title-custom">Space comment authors</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of commentators per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="chart-spc-auth-comments"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body col-centered">
+                                            <div class="dc-title-custom">Space page authors</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of authors per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="chart-spc-auth-pages"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body col-centered">
+                                            <div class="dc-title-custom">Space comments</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of comments per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="chart-spc-comments"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Space tags</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of tags per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="chart-spc-tags"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Space likes</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of likes per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="chart-spc-likes"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Space attachments</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of attachments per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="chart-spc-attachments"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of UserAndCollaboration area -->
+
+                    <!-- Start of Co-Space area -->
+                    <div role=" tabpanel" class="tab-pane fade" id="panels-content-area" aria-labelledby="tabs3">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Tag network</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Spaces are connected if they use the same tags. Personal spaces are ignored. Note that not all results are visualized due to readability and performance. Tipp: a double click on a space shows just the directly connected.">&#8505</span>
+                                            <div class="col-centered d3-network-custom" id="chart-tag-neighbours"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Co-Space network</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Spaces are connected if both spaces have content with the same tags. Only the 3 most used tags per space are used to calculate the connection. Tipp: a double click on a space shows just the directly connected.">&#8505</span>
+                                            <span class="text-right tool-tip-custom" title="Fullsize" id="maximize-cospace" style="float: right">&#10138</span>
+                                            <div class="col-centered d3-network-custom-maximize" id="chart-co-space"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Co-Space area -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".nav-tabs a").click(function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+            // add eventhandlers to tab-changes
+            $('.nav-tabs a').click(function() {
+                var tab = $(event.target).text();
+                if (tab == "Content") {}
+
+            });
+        });
+        var spotLightElement;
+
+        $("#spot-light").hide();
+        $("#close-spot-light").click(function(e) {
+            $("#spot-light-content").empty();
+            $("#content").show();
+            $("#spot-light").hide();
+        });
+
+        $('#maximize-cospace').click(function(e) {
+            var width = $(window).width() - 50;
+            var height = $(window).height() - 100;
+            var spotlight = $("#spot-light-content");
+            if (typeof(spotLightElement == 'undefined')) {
+                genericQuerieExecutor(function(json) {
+                    drawCoSpaceNetwork(json, "#spot-light-content", width, height)
+                }, "spc", "QRY_CO_NETWORK" + querie);
+            }
+            $("#content").hide();
+            $("#spot-light").show();
+        });
+
+        // Set BaseUrl for Rest-Calls
+        setBaseUrl();
+        var spaceId = "${action.spaceId}";
+        var querie = "?spaceid=" + spaceId;
+
+        genericQuerieExecutor(function(json) {
+            getSpaceCommentPageCount(json)
+        }, "spc", "QRY_SUM_PGNCOM" + "?spaceid=" + spaceId);
+
+        genericQuerieExecutor(function(json) {
+            drawBoxPlotQuarterBased(json, "#chart-spc-auth-comments",
+                "Comment authors")
+        }, "spc", "QRY_AUTHORS_COMMENTS" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawBoxPlotQuarterBased(json, "#chart-spc-auth-pages",
+                "Page authors")
+        }, "spc", "QRY_AUTHORS_PAGES" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawBoxPlotQuarterBased(json, "#chart-spc-comments",
+                "Space comments")
+        }, "spc", "QRY_COUNT_COMMENTS" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawBoxPlotQuarterBased(json, "#chart-spc-tags", "Space tags")
+        }, "spc", "QRY_COUNT_TAGS" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawBoxPlotQuarterBased(json, "#chart-spc-likes", "Space likes")
+        }, "spc", "QRY_COUNT_LIKES" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawBoxPlotQuarterBased(json, "#chart-spc-attachments",
+                "Space attachments")
+        }, "spc", "QRY_COUNT_ATTACHMENTS" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawTagCloudSpace(json, "#chart-tag-cloud")
+        }, "spc", "QRY_TAG_CLOUD" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawSpaceUserLoactionRatios(json, "#chart-user-location")
+        }, "spc", "QRY_USR_LOCATION" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawForcedGraph(json, "#chart-tag-neighbours", "space")
+        }, "spc", "QRY_TAG_NEIGHBOURS" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawCoSpaceNetwork(json, "#chart-co-space")
+        }, "spc", "QRY_CO_NETWORK" + querie);
+    </script>
+
+    <!-- end: Javascript -->
+</body>
+
+</html>

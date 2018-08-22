@@ -1,0 +1,10 @@
+truncate agg_userglobalstatistics;
+truncate agg_userinteractions;
+truncate AGG_SPACEWORDCOUNT;
+truncate AGG_SPACECOMMENTWORDCOUNT;
+truncate AGG_SHAREDLOCATION;
+truncate AGG_FULLCHAIN;
+truncate AGG_SPACERELATIONS;
+truncate agg_commentchain_coltero;
+truncate agg_contentchain_coltero;
+truncate COUNTS_COLTERO;

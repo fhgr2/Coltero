@@ -1,0 +1,708 @@
+<html>
+
+<head>
+    <title>Management Dashboard</title>
+    $webResourceManager.requireResource("ch.htwchur.coltero.dashboard:dashboard-resources")
+    <meta name="decorator" content="atl.general">
+    <meta charset="utf-8">
+    <meta name="description" content="coltero dashboard">
+    <meta name="author" content="HTW Chur, Sandro Hoerler, sandro.hoerler@htwchur.ch">
+    <meta name="keyword" content="KPI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body id="mimin" class="dashboard">
+    <div id="spot-light">
+        <div class="tool-tip-custom" id="close-spot-light">&#9746</div>
+        <div id="spot-light-content"></div>
+    </div>
+
+    <div class="container-fluid mimin-wrapper" id="space-board">
+
+        <div id="content" class="coltero">
+            <div class="tabs-wrapper text-center">
+                <div class="panel box-shadow-none text-left content-header">
+                    <div class="panel-body" style="padding-bottom:0px;">
+                        <ul id="tabs-demo" class="nav nav-tabs content-header-tab" role="tablist" style="padding-top:10px;">
+                            <li role="presentation" class="active">
+                                <a href="#tabs-area-demo" id="tabs1" data-toggle="tab">Content and User Overview</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#panels-area-demo" id="tabs2" data-toggle="tab">User and Collaboration</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#panels-content-area" id="tabs3" data-toggle="tab">Content</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#panels-user-area" id="tabs4" data-toggle="tab">User</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#panels-space-area" id="tabs5" data-toggle="tab">Space</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#panels-tag-area" id="tabs6" data-toggle="tab">Tag</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 tab-content">
+
+                    <div role="tabpanel" class="tab-pane fade active in col-md-offset-1" id="tabs-area-demo" aria-labelledby="tabs1">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Pages</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of all current and unique pages in the whole wiki.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-pages"></h2>
+                                        <p>Confluence<br>Pages</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Comments</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of all comments in the whole wiki.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-comments"></h2>
+                                        <p>Confluence<br>Comments</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Commentators</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of unique users that wrote at least one comment.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-commentators"></h2>
+                                        <p>Confluence<br>Commentators</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Users</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of all registered users.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-users"></h2>
+                                        <p>Confluence<br>Users</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Authors</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of unique users that at least once edited a page.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-authors"></h2>
+                                        <p>Confluence<br>Authors</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Uploaders</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of unique users that uploaded at least one file.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-uploaders"></h2>
+                                        <p>Confluence<br>Uploaders</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Slackers</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of unique users that neither edited a page, wrote a comment nor uploaded a file.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-slackers"></h2>
+                                        <p>Confluence<br>Slackers</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Taggers</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of unique users that added a tag/label to content.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-taggers"></h2>
+                                        <p>Confluence<br>Taggers</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Likers</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of unique users that 'liked' content.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="total-likers"></h2>
+                                        <p>Confluence<br>Likers</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 text-right padding-0">
+                                        <span="text-left tool-tip-custom" data-toggle="tooltip" title="The lines between the offices show the cross-site interaction of employees. The stronger the color of the lines, the higher the collaboration between these locations." style="float: left">&#8505</span>
+                                            <div></div>
+                                            <div class="d3-world-map" id="world-chart">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Overview Tab-->
+
+                    <!-- Start of UserAndCollaboration Area-->
+                    <div role="tabpanel" class="tab-pane fade" id="panels-area-demo" aria-labelledby="tabs2">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Shared location network</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Locations are connected by their users being contributing members of the same space. The stronger the color of the lines, the higher the collaboration between these locations. Tipp: a double click on a space shows just the directly connected.">&#8505</span>
+                                            <div class="col-centered d3-network-custom" id="location-network"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Co-Space network</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Network of spaces connected by users. Tipp: a double click on a space shows just the directly connected. An other doubleclick on it, shows all again. To enlarge the visualization click on the small arrow left from the info icon.">&#8505</span>
+                                            <span class="text-right tool-tip-custom" title="Fullsize" id="maximize-cospacenetwork" style="float: right">&#10138</span>
+                                            <div class="col-centered d3-network-custom-maximize" id="network-cospace"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body col-centered">
+                                            <span class="dc-title-custom">Authors Boxplot</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of authors per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="boxplot-authors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Commentators Boxplot</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of commentators per page. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="boxplot-commentators"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Collaboration metric</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Indication if the Wiki is used more as a collaboration or documentation platform. Collaboration is counted by the number of pages with more than 3 contributing users.">&#8505</span>
+                                            <div class="col-centered dc-chart-pie" id="chart-collabmetric"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of UserAndCollaboration area -->
+
+                    <!-- Start of Content-panel area -->
+                    <div role="tabpanel" class="tab-pane fade" id="panels-content-area" aria-labelledby="tabs3">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Comments Boxplot</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Comment distribution over all pages. Shows the avarage number of comments per page as well as outliners. Hint: double click on the white space of the boxplot fades in/out the outliers. ">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="boxplot-comments"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Tags Boxplot</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Tag/label distribution over all pages. Shows the avarage number of tags/labels per page as well as outliners. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="boxplot-tags"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Likes Boxplot</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="'Like' distribution over all pages. Shows the avarage number of 'likes' per page as well as outliners. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="boxplot-likes"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Attachments Boxplot</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Attachment distribution over all pages. Shows the avarage number of attachements added to a page as well as outliners. Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="boxplot-attachments"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Content-panel area -->
+
+                    <!-- Start of User-panel area -->
+                    <div role="tabpanel" class="tab-pane fade" id="panels-user-area" aria-labelledby="tabs4">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Days of Work</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of activities per weekday.">&#8505</span>
+                                            <div class="col-centered dc-chart-work" id="barchart-dow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Working-Hours</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of activities per daytime.">&#8505</span>
+                                            <div class="col-centered dc-chart-work" id="barchart-wokinghours"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <span class="dc-title-custom">Interactions Boxplot</span>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of actions per user. (Edit page, writing comments, deleting, liking, adding attachements). Hint: double click on the white space of the boxplot fades in/out the outliers.">&#8505</span>
+                                            <div class="col-centered dc-chart-boxplot" id="boxplot-interactions"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of User-panel area -->
+
+                    <!-- Start of Space-panel area -->
+
+                    <div role="tabpanel" class="tab-pane fade" id="panels-space-area" aria-labelledby="tabs5">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <!-- start menu space tag area  -->
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="col-md-12 tabs-area">
+                                        <ul id="tabs-demo4" class="nav nav-tabs nav-tabs-v3" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a href="#tabs-space-tag-development" id="tabs-space-tag-1" role="tab" data-toggle="tab" aria-expanded="true">Development</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-tag-project" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Project</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-tag-collaboration" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Collaboration</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-tag-department" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Department</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-tag-documentation" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Documentation</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-tag-knowledge" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Knowledge</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-tag-other" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Other tags</a>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Start Space-Tag tab area -->
+                                        <div id="tabs-space-tags" class="tab-content tab-content-v3">
+                                            <div role="tabpanel" class="tab-pane fade active in" id="tabs-space-tag-development" aria-labelledby="tabs-demo4-area1">
+                                                <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number and percentage compared to all spaces of all current development spaces.">&#8505</span>
+                                                <div class="panel-body dc-chart-work" id="stackedbar-development">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-tag-project" aria-labelledby="tabs-demo4-area2">
+                                                <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number and percentage compared to all spaces of all current project spaces.">&#8505</span>
+                                                <div class="panel-body dc-chart-work" id="stackedbar-project">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-tag-collaboration" aria-labelledby="tabs-demo4-area2">
+                                                <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number and percentage compared to all spaces of all current collaboration spaces.">&#8505</span>
+                                                <div class="panel-body dc-chart-work" id="stackedbar-collaboration">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-tag-department" aria-labelledby="tabs-demo4-area2">
+                                                <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number and percentage compared to all spaces of all current departement spaces.">&#8505</span>
+                                                <div class="panel-body dc-chart-work" id="stackedbar-department">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-tag-documentation" aria-labelledby="tabs-demo4-area2">
+                                                <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number and percentage compared to all spaces of all current documentation spaces.">&#8505</span>
+                                                <div class="panel-body dc-chart-work" id="stackedbar-documentation">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-tag-knowledge" aria-labelledby="tabs-demo4-area2">
+                                                <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number and percentage compared to all spaces of all current knowledge-base spaces.">&#8505</span>
+                                                <div class="panel-body dc-chart-work" id="stackedbar-knowledge">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-tag-other" aria-labelledby="tabs-demo4-area2">
+                                                <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number and percentage compared to all spaces of all current spaces with different labels">&#8505</span>
+                                                <div class="panel-body dc-chart-work" id="stackedbar-other">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Space-Tag tab area -->
+
+                                    </div>
+                                </div>
+                                <!-- start menu top10 area  -->
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="col-md-12 tabs-area">
+                                        <ul id="tabs-demo4" class="nav nav-tabs nav-tabs-v3" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a href="#tabs-space-top-users" id="tabs-space-tag-1" role="tab" data-toggle="tab" aria-expanded="true">Most users</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-top-pages" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Biggest pages</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-top-comments" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Biggest comments</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-top-commtores" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Most co-commtores</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-top-collaborative" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Most collaborative</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tabs-space-top-discussed" role="tab" id="tabs-space-tag-2" data-toggle="tab" aria-expanded="false">Most discussed</a>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Start Top10 tab area -->
+                                        <div id="tabs-space-tags" class="tab-content tab-content-v3">
+                                            <div role="tabpanel" class="tab-pane fade active in" id="tabs-space-top-users" aria-labelledby="tabs-demo4-area1">
+                                                <div class="panel-body">
+                                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="The 10 biggest spaces according to the sum of the users in that space.">&#8505</span>
+                                                    <table class="coltero-table" id="chart-top10usercount"></table>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-top-pages" aria-labelledby="tabs-demo4-area2">
+                                                <div class="panel-body">
+                                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="The 10 biggest spaces according to the sum of words written in the spaces content.">&#8505</span>
+                                                    <table class="coltero-table" id="chart-top10words"></table>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-top-comments" aria-labelledby="tabs-demo4-area2">
+                                                <div class="panel-body">
+                                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="The 10 biggest spaces according to the sum of words written in the spaces comments.">&#8505</span>
+                                                    <table class="coltero-table" id="chart-top10commented"></table>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-top-commtores" aria-labelledby="tabs-demo4-area2">
+                                                <div class="panel-body">
+                                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="The 10 biggest spaces according to the sum of authors and commmentors in the space.">&#8505</span>
+                                                    <table class="coltero-table" id="chart-top10commtores"></table>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-top-collaborative" aria-labelledby="tabs-demo4-area2">
+                                                <div class="panel-body">
+                                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="The 10 biggest most collaborative spaces. (Number of unique authors of a single page).">&#8505</span>
+                                                    <table class="coltero-table" id="chart-top10collaboration"></table>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tabs-space-top-discussed" aria-labelledby="tabs-demo4-area2">
+                                                <div class="panel-body">
+                                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="The 10 most discussed spaces according to the number of comments.">&#8505</span>
+                                                    <table class="coltero-table" id="chart-top10discussed"></table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Top10 tab area -->
+                                    </div>
+                                </div>
+                                <!-- end menu top10 tag area -->
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Available spaces</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of all unique spaces in the whole wiki.">&#8505</span>
+                                            <div class="col-centered dc-chart-work" id="linechart-numberofspaces"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Space Types</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of personal and global spaces.">&#8505</span>
+                                            <div class="col-centered dc-chart-work" id="linechart-spacetypes"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Isolated spaces</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number isolated spaces. Isolated spaces are not connected to any other spaces.">&#8505</span>
+                                            <div class="col-centered dc-chart-work" id="linechart-isolated"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Active user precentage</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Sum of all active users (users with at least one contribution) compared to the sum of all inactive users (users with no contributions).">&#8505</span>
+                                            <div class="col-centered dc-chart-work" id="barchart-activeusers"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="min-width:882px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="dc-title-custom">Active user precentage per location</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Comparison of all active users of a specific location compared to the overall sum of all avtive users.">&#8505</span>
+                                            <div class="col-centered dc-chart-work" id="chart-activeuserslocation"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Space-panel area -->
+
+                    <!-- Start of tag-panel area -->
+                    <div role="tabpanel" class="tab-pane fade" id="panels-tag-area" aria-labelledby="tabs6">
+                        <div class="col-md-12">
+                            <div class="col-md-6" style="min-width:882px">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="dc-title-custom">Tagged to untagged Attachments ratio</div>
+                                        <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of tagged attachements compared to untagged attachements.">&#8505</span>
+                                        <div class="col-centered dc-chart-pie" id="chart-tagratio"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="min-width:882px">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="dc-title-custom">Tag-Cloud</div>
+                                        <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Tags used in the space.">&#8505</span>
+                                        <div class="col-centered dc-chart-pie" id="chart-tag-cloud"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="min-width:882px">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="dc-title-custom">Number of tags</div>
+                                        <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of applied tags per quarter.">&#8505</span>
+                                        <div class="col-centered dc-chart-work" id="chart-numbertags"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="min-width:882px">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <span class="dc-title-custom">Tag network</span>
+                                        <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Top 1500 tags used more than 20 times. The stronger the color of the lines, the higher is the relation between the tags. Tipp: a double click on a tag shows just the directly connected.">&#8505</span>
+                                        <span class="text-right tool-tip-custom" title="Fullsize" id="maximize-tagnetwork" style="float: right">&#10138</span>
+                                        <div></div>
+                                        <div class="col-centered d3-network-custom-maximize" id="network-tag"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of tag-panel area -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Set BaseUrl for Rest-Calls
+        setBaseUrl();
+        var spotLightElement;
+        var locationsForMap;
+
+        /* nested call, run callback after successful rest call*/
+        querieWorldMapLocationData(function(json) {
+            locationsForMap = json;
+            $(document).ready(function() {
+                $(".nav-tabs a").click(function(e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+
+                // add eventhandlers to tab-changes
+                $('.nav-tabs a').click(function(e) {
+                    var tab = (e.target.text || $(event.target).text());
+                    if (tab == "Tag") {
+                        calculateAndDrawTagTab();
+                    } else if (tab == "Space") {
+                        calculateAndDrawSpace();
+                    } else if (tab == "User") {
+                        calculatedAndDrawUser();
+                    } else if (tab == "Content") {
+                        calculateAndDrawContent();
+                    } else if (tab == "User and Collaboration") {
+                        calculateAndDrawUserAndCollaboration();
+                    }
+
+                });
+
+                $("#spot-light").hide();
+                $("#close-spot-light").click(function(e) {
+                    $("#spot-light-content").empty();
+                    $("#content").show();
+                    $("#spot-light").hide();
+                });
+
+
+                $('#maximize-cospacenetwork').click(function(e) {
+                    var width = $(window).width() - 50;
+                    var height = $(window).height() - 100;
+                    var spotlight = $("#spot-light-content");
+                    if (typeof(spotLightElement == 'undefined')) {
+                        genericQuerieExecutor(function(json) {
+                            drawCoSpaceNetwork(json, "#spot-light-content", width, height)
+                        }, "spaces", "QRY_SPC_NETWORK");
+                    }
+                    $("#content").hide();
+                    $("#spot-light").show();
+                });
+
+                $('#maximize-tagnetwork').click(function(e) {
+                    var width = $(window).width() - 50;
+                    var height = $(window).height() - 100;
+                    var spotlight = $("#spot-light-content");
+                    if (typeof(spotLightElement == 'undefined')) {
+                        genericQuerieExecutor(function(json) {
+                            drawTagNetwork(json, "#spot-light-content", width, height)
+                        }, "tags", "QRY_TAG_NETWORK");
+                    }
+                    $("#content").hide();
+                    $("#spot-light").show();
+                });
+
+                getColteroKpi(function(json) {
+                    changeKpiValues(json);
+                });
+
+
+                function hideAndShow(id) {
+                    var ids = $(id).map(function() {
+                        return $(this).attr('id');
+                    }).get();
+                    $("#space-board").children().hide();
+                    $("#location-network").show();
+
+                }
+
+                querieWorldMap(function(json) {
+                    drawGeoMap(locationsForMap, json, "#world-chart")
+                }, "spaces", "QRY_SPC_SHAREDLOCATION");
+            });
+        }, "interactions", "QRY_GET_WORLDDATA");
+    </script>
+</body>
+
+</html>

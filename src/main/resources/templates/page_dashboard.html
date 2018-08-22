@@ -1,0 +1,190 @@
+<html>
+
+<head>
+    <title>$action.pageName Dashboard</title>
+    $webResourceManager.requireResource("ch.htwchur.coltero.dashboard:dashboard-resources")
+    <meta name="decorator" content="atl.general">
+    <meta charset="utf-8">
+    <meta name="description" content="coltero dashboard">
+    <meta name="author" content="HTW Chur, Sandro Hoerler, sandro.hoerler@htwchur.ch">
+    <meta name="keyword" content="KPI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+</head>
+
+
+<body id="mimin" class="dashboard">
+
+    <div class="container-fluid mimin-wrapper">
+
+        <div id="content" class="coltero">
+            <div class="tabs-wrapper text-center">
+                <div class="panel box-shadow-none text-left content-header">
+                    <div class="panel-body" style="padding-bottom:0px;">
+                        <ul id="tabs-demo" class="nav nav-tabs content-header-tab" role="tablist" style="padding-top:10px;">
+                            <li role="presentation" class="active">
+                                <a href="#tabs-area-demo" id="tabs1" data-toggle="tab">Content and User Overview</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#panels-area-demo" id="tabs2" data-toggle="tab">Tag network</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 tab-content">
+
+                    <div role="tabpanel" class="tab-pane fade active in" id="tabs-area-demo" aria-labelledby="tabs1">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Comments</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of comments.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-comments"></h2>
+                                        <p>Page comments</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Commentators</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Nummber of unique commentators.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-commentators"></h2>
+                                        <p>Page commentators</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Authors</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of unique authors.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-authors"></h2>
+                                        <p>Page authors</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="panel box-v1">
+                                    <div class="panel-heading bg-white border-none" style="height:20px">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                            <h4 class="text-left">Words</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Number of written words.">&#8505</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <h2 id="chart-words"></h2>
+                                        <p>Page words</p>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="min-width:882px">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="dc-title-custom">User location</div>
+                                    <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Precentage of users per location that contributed to the page.">&#8505</span>
+                                    <div class="col-centered dc-chart-pie" id="chart-locations"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Overview Tab-->
+
+                    <!-- Start of Tag network Area-->
+                    <div role="tabpanel" class="tab-pane fade" id="panels-area-demo" aria-labelledby="tabs2">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+
+                                <div class="col-md-6" style="min-width:852px">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body col-centered">
+                                            <div class="dc-title-custom">Tag network</div>
+                                            <span class="text-right tool-tip-custom" data-toggle="tooltip" title="Pages are connected if they used minimum 3 same tags. Tipp: a double click on a space shows just the directly connected.">&#8505</span>
+                                            <div class="col-centered d3-network-custom" id="chart-tag-network"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Tag network area -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".nav-tabs a").click(function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+
+        // Set BaseUrl for Rest-Calls
+        setBaseUrl();
+
+        var pageid = "$action.pageId"
+        var querie = "?pageid=" + pageid;
+
+        genericQuerieExecutor(function(json) {
+            getPageComments(json, "#chart-comments")
+        }, "pages", "QRY_COMMENT_COUNT" + querie);
+
+        genericQuerieExecutor(function(json) {
+            getPageComAuthors(json, "#chart-commentators")
+        }, "pages", "QRY_COMAUTHORS_COUNT" + querie);
+
+        genericQuerieExecutor(function(json) {
+            getPageWordCount(json, "#chart-words")
+        }, "pages", "QRY_PAGE_BODY" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawSpaceUserLoactionRatios(json, "#chart-locations")
+        }, "pages", "QRY_USR_LOCATION" + querie);
+
+        genericQuerieExecutor(function(json) {
+            drawForcedGraph(json, "#chart-tag-network")
+        }, "pages", "QRY_TAG_PAGES" + querie);
+    </script>
+
+    <!-- end: Javascript -->
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<atlassian-plugin key="${atlassian.plugin.key}"
+	name="${project.name}" plugins-version="2">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<bundle-instructions>
+			<Import-Package>org.postgresql.*;resolution:=optional
+			</Import-Package>
+		</bundle-instructions>
+		<!-- Add support for Scheduler -->
+		<vendor name="${project.organization.name}"
+			url="${project.organization.url}" />
+		<param name="plugin-icon">images/pluginIcon.png</param>
+		<param name="plugin-logo">images/pluginIcon.png</param>
+	</plugin-info>
+
+	<!-- Management-Dashboard Action -->
+	<web-item name="show-mngt-dashboard-ui"
+		key="show-mngt-dashboard-ui" section="system.user" weight="10">
+		<description key="show-mngt-dashboard-ui.link.desc">Show Management-Dashboard</description>
+		<label key="Management Dashboard" />
+		<link linkId="show-mngt-dashboard">/plugins/mngt-dashboard/show.action</link>
+		<condition
+			class="ch.htwchur.coltero.dashboard.permission.UserInManagementGroup">
+		</condition>
+	</web-item>
+
+	<xwork name="show-mgnt-dashboard-action-xwork"
+		key="show-mgnt-dashboard-action-xwork">
+		<description
+			key="item.show-mgnt-dashboard-action-xwork.link.desc">show-mngt-dashboard-action</description>
+		<package name="mngt-dashboard" extends="default"
+			namespace="/plugins/mngt-dashboard">
+			<default-interceptor-ref name="defaultStack" />
+			<action name="show"
+				class="ch.htwchur.coltero.dashboard.mngtdashboard.ManagerDashboardAction">
+				<result name="success" type="velocity">/templates/mngt_dashboard.html
+				</result>
+				<result name="unauthorized" type="velocity">/templates/unauthorized.vm
+				</result>
+			</action>
+		</package>
+	</xwork>
+
+	<!-- User Dashboard Action -->
+	<web-item name="show-usr-dashboard-ui"
+		key="show-usr-dashboard-ui" section="system.user" weight="10">
+		<description key="show-usr-dashboard-ui.link.desc">Show User-Dashboard</description>
+		<label key="User Dashboard" />
+		<link linkId="show-usr-dashboard">/plugins/usr-dashboard/show.action</link>
+	</web-item>
+
+	<xwork name="show-usr-dashboard-action-xwork"
+		key="show-usr-dashboard-action-xwork">
+		<description
+			key="item.show-usr-dashboard-action-xwork.link.desc">show-usr-dashboard-action</description>
+		<package name="usr-dashboard" extends="default"
+			namespace="/plugins/usr-dashboard">
+			<default-interceptor-ref name="defaultStack" />
+			<action name="show"
+				class="ch.htwchur.coltero.dashboard.userdashboard.UsrDashboardAction">
+				<result name="success" type="velocity">/templates/user_dashboard.html
+				</result>
+				<result name="unauthorized" type="velocity">/templates/unauthorized.vm
+				</result>
+			</action>
+		</package>
+	</xwork>
+
+	<!-- Space Dashboard Action -->
+	<web-item name="show-spc-dashboard-ui"
+		key="show-spc-dashboard-ui" section="system.header/left" weight="10">
+		<description key="show-spc-dashboard-ui.link.desc">Show Space-Dashboard</description>
+		<label key="Space Dashboard" />
+		<link linkId="show-spc-dashboard">/plugins/spc-dashboard/show.action?pageId=$page.id
+		</link>
+		<condition
+			class="ch.htwchur.coltero.dashboard.permission.UserSpacePermission">
+		</condition>
+	</web-item>
+
+	<xwork name="show-spc-dashboard-action-xwork"
+		key="show-spc-dashboard-action-xwork">
+		<description
+			key="item.show-spc-dashboard-action-xwork.link.desc">show-spc-dashboard-action</description>
+		<package name="spc-dashboard" extends="default"
+			namespace="/plugins/spc-dashboard">
+			<default-interceptor-ref name="defaultStack" />
+			<action name="show"
+				class="ch.htwchur.coltero.dashboard.spacedashboard.SpaceDashboardAction">
+				<result name="success" type="velocity">/templates/space_dashboard.html
+				</result>
+				<result name="unauthorized" type="velocity">/templates/unauthorized.vm
+				</result>
+			</action>
+		</package>
+	</xwork>
+
+	<!-- Page Dashboard Action -->
+	<web-item name="show-pg-dashboard-ui"
+		key="show-pg-dashboard-ui" section="system.header/left" weight="10">
+		<description key="show-pg-dashboard-ui.link.desc">Show Page-Dashboard</description>
+		<label key="Page Dashboard" />
+		<link linkId="show-pg-dashboard">/plugins/pg-dashboard/show.action?pageId=$page.id
+		</link>
+		<condition
+			class="ch.htwchur.coltero.dashboard.permission.UserPagePermission">
+		</condition>
+	</web-item>
+
+	<xwork name="show-pg-dashboard-action-xwork"
+		key="show-pg-dashboard-action-xwork">
+		<description
+			key="item.show-pg-dashboard-action-xwork.link.desc">show-pg-dashboard-action</description>
+		<package name="pg-dashboard" extends="default"
+			namespace="/plugins/pg-dashboard">
+			<default-interceptor-ref name="defaultStack" />
+			<action name="show"
+				class="ch.htwchur.coltero.dashboard.pagedashboard.PageDashboardAction">
+				<result name="success" type="velocity">/templates/page_dashboard.html
+				</result>
+				<result name="unauthorized" type="velocity">/templates/unauthorized.vm
+				</result>
+			</action>
+		</package>
+	</xwork>
+
+
+	<resource type="i18n" name="i18n" location="dashboard" />
+
+	<!-- add our web resources -->
+	<web-resource key="dashboard-resources"
+		name="dashboard Web Resources">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
+		<resource type="download" name="boostrap.min.css"
+			location="/css/bootstrap.min.css" />
+		<resource type="download" name="main.css"
+			location="/css/main.css" />
+		<resource type="download" name="animate.min.css"
+			location="/css/animate.min.css" />
+		<resource type="download" name="dc.css"
+			location="/js/dc/dc.css" />
+		<resource type="download" name="drawstyles.css"
+			location="/js/styles/drawstyles.css" />
+
+		<resource type="download" name="d3-v2.5.js"
+			location="/js/geo/d3-v2.5.js" />
+		<resource type="download" name="d3.csv.js"
+			location="/js/geo/d3.csv.js" />
+		<resource type="download" name="d3.geo.js"
+			location="/js/geo/d3.geo.js" />
+		<resource type="download" name="d3.geom.js"
+			location="/js/geo/d3.geom.js" />
+		<resource type="download" name="geologic.js"
+			location="/js/dashboardlogic/geologic.js" />
+
+		<resource type="download" name="dashboard.js"
+			location="/js/dashboardlogic/dashboard.js" />
+
+		<resource type="download" name="bootstrap.min.js"
+			location="/js/bootstrap.min.js" />
+
+		<resource type="download" name="main.js"
+			location="/js/main.js" />
+		<resource type="download" name="generalcoltero.js"
+			location="/js/dashboardlogic/generalcoltero.js" />
+		<resource type="download" name="crossfilter.js"
+			location="/js/dc/crossfilter.js" />
+		<resource type="download" name="d3.js"
+			location="/js/dc/d3.js" />
+		<resource type="download" name="dc.js"
+			location="/js/dc/dc.js" />
+		<resource type="download" name="print_filter.js"
+			location="/js/dc/print_filter.js" />
+		<resource type="download" name="helper.js"
+			location="/js/dashboardlogic/helper.js" />
+		<resource type="download" name="usercollaboration.js"
+			location="/js/dashboardlogic/usercollaboration.js" />
+		<resource type="download" name="d3.layout.cloud.js"
+			location="/js/d3.layout.cloud.js" />
+		<resource type="download" name="dc-wordcloud.js"
+			location="/js/dc-wordcloud.js" />
+		<resource type="download" name="dashboardEventHandler.js"
+			location="/js/dashboardlogic/dashboardEventHandler.js" />
+		<resource type="download" name="usernetwork.viz.js"
+			location="/js/dashboardlogic/usernetwork.viz.js" />
+		<resource type="download" name="d3.tip.v0.6.3.js"
+			location="/js/d3.tip.v0.6.3.js" />
+		<!-- add our web resources -->
+		<context>dashboard</context>
+	</web-resource>
+
+	<job-config name="Dashboard Aggregation"
+		key="aggregator-job">
+		<job key="aggregationRunner" perClusterJob="true"
+			clusteredOnly="false" />
+		<schedule cron-expression="0 0 10 * * ?" jitterSecs="10" />
+		<managed editable="true" keepingHistory="true"
+			canRunAdhoc="true" canDisable="true" />
+	</job-config>
+
+	<rest key="colteroRestService" path="/dashboard" version="1.0">
+		<description>Provides REST Service for Metric Dashboard</description>
+	</rest>
+
+</atlassian-plugin>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:atlassian-scanner="http://www.atlassian.com/schema/atlassian-scanner"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.atlassian.com/schema/atlassian-scanner
+        http://www.atlassian.com/schema/atlassian-scanner/atlassian-scanner.xsd">
+    <atlassian-scanner:scan-indexes/>
+    <bean id="database" class="ch.htwchur.coltero.db.Database"></bean>
+    <bean id="mngtCountQueries" class="ch.htwchur.coltero.dashboard.mngtdashboard.queries.MngtCountQueries"></bean>
+    <bean id="calcAggregation" class="ch.htwchur.coltero.db.aggregation.AggregateDashboardData"></bean>
+	<bean id="aggregationRunner" class="ch.htwchur.coltero.db.aggregation.AggregationRunner"></bean>
+	<bean id="querieLoader" class="ch.htwchur.coltero.db.QuerieLoader"></bean>
+	<bean id="interactionQueries" class="ch.htwchur.coltero.dashboard.mngtdashboard.queries.InteractionQueries"></bean>
+	<bean id="spaceQueries" class="ch.htwchur.coltero.dashboard.mngtdashboard.queries.SpaceQueries"></bean>
+	<bean id="userQueries" class="ch.htwchur.coltero.dashboard.mngtdashboard.queries.UserQueries"></bean>
+	<bean id="htmlContentExtractor" class="ch.htwchur.coltero.dashboard.logic.extraction.HtmlContentExtractor"></bean>
+	<bean id="tagQueries" class="ch.htwchur.coltero.dashboard.mngtdashboard.queries.TagQueries"></bean>
+	<bean id="userSpacePermission" class="ch.htwchur.coltero.dashboard.permission.UserSpacePermission"></bean>
+	<bean id="userPagePermission" class="ch.htwchur.coltero.dashboard.permission.UserPagePermission"></bean>
+	<bean id="spaceQueriesSpc" class="ch.htwchur.coltero.dashboard.spacedashboard.SpaceQueries"></bean>
+	<bean id="pageQueries" class="ch.htwchur.coltero.dashboard.pagedashboard.PageDashboardQueries"></bean>
+	<bean id="userQueriesUsr" class="ch.htwchur.coltero.dashboard.userdashboard.UserQueries"></bean>
+	<bean id="userInteractionLogic" class="ch.htwchur.coltero.dashboard.logic.UserInteractionLogic"></bean>
+	<bean id="GenericResolver" class="ch.htwchur.coltero.dashboard.helper.GenericResolver"></bean>
+</beans>
